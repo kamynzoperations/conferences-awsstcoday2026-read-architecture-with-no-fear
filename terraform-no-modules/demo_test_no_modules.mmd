@@ -1,0 +1,40 @@
+flowchart LR
+    subgraph TF-no-modules
+        data_aws_ami_mlflow_server_awscday["data.aws_ami.mlflow-server-awscday"]
+        aws_iam_instance_profile_ec2_instance_profile_awscday["aws_iam_instance_profile.ec2_instance_profile_awscday"]
+        aws_iam_policy_attachment_s3_access_attachment_awscday["aws_iam_policy_attachment.s3_access_attachment_awscday"]
+        aws_iam_role_ec2_role_awscday["aws_iam_role.ec2_role_awscday"]
+        aws_instance_mlflow_server_awscday["aws_instance.mlflow-server-awscday"]
+        aws_internet_gateway_gw["aws_internet_gateway.gw"]
+        aws_lb_alb_mlflow_awscday["aws_lb.alb-mlflow-awscday"]
+        aws_lb_listener_http_listener_awscday["aws_lb_listener.http_listener_awscday"]
+        aws_lb_target_group_tg_awscday["aws_lb_target_group.tg-awscday"]
+        aws_route_default_route["aws_route.default_route"]
+        aws_route_table_public_rt["aws_route_table.public_rt"]
+        aws_route_table_association_dev_efi_public_association["aws_route_table_association.dev-efi-public_association"]
+        aws_s3_bucket_mlflow_bucket_awscday["aws_s3_bucket.mlflow_bucket_awscday"]
+        aws_security_group_instance_sg["aws_security_group.instance_sg"]
+        aws_subnet_private_subnet["aws_subnet.private_subnet"]
+        aws_subnet_public_subnet["aws_subnet.public_subnet"]
+        aws_vpc_dev_efi_vpc["aws_vpc.dev-efi-vpc"]
+    end
+    aws_iam_instance_profile_ec2_instance_profile_awscday --> aws_iam_role_ec2_role_awscday
+    aws_iam_policy_attachment_s3_access_attachment_awscday --> aws_iam_role_ec2_role_awscday
+    aws_instance_mlflow_server_awscday --> data_aws_ami_mlflow_server_awscday
+    aws_instance_mlflow_server_awscday --> aws_iam_instance_profile_ec2_instance_profile_awscday
+    aws_instance_mlflow_server_awscday --> aws_security_group_instance_sg
+    aws_instance_mlflow_server_awscday --> aws_subnet_public_subnet
+    aws_internet_gateway_gw --> aws_vpc_dev_efi_vpc
+    aws_lb_alb_mlflow_awscday --> aws_subnet_private_subnet
+    aws_lb_alb_mlflow_awscday --> aws_subnet_public_subnet
+    aws_lb_listener_http_listener_awscday --> aws_lb_alb_mlflow_awscday
+    aws_lb_listener_http_listener_awscday --> aws_lb_target_group_tg_awscday
+    aws_lb_target_group_tg_awscday --> aws_vpc_dev_efi_vpc
+    aws_route_default_route --> aws_internet_gateway_gw
+    aws_route_default_route --> aws_route_table_public_rt
+    aws_route_table_public_rt --> aws_vpc_dev_efi_vpc
+    aws_route_table_association_dev_efi_public_association --> aws_route_table_public_rt
+    aws_route_table_association_dev_efi_public_association --> aws_subnet_public_subnet
+    aws_security_group_instance_sg --> aws_vpc_dev_efi_vpc
+    aws_subnet_private_subnet --> aws_vpc_dev_efi_vpc
+    aws_subnet_public_subnet --> aws_vpc_dev_efi_vpc
