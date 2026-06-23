@@ -265,3 +265,8 @@ conferences-awsstcoday2026-read-architecture-with-no-fear/terraform-with-modules
 *.tfstate.backup
 .terraform.lock.hcl
 .terraform/
+
+
+#From subfolders
+before/*
+notes.txt

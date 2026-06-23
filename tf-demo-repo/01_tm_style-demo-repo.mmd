@@ -1,0 +1,66 @@
+flowchart TD
+    %% ===== STYLE DEFINITIONS =====
+    classDef compute fill:#FF9900,stroke:#232F3E,stroke-width:2px,color:#232F3E
+    classDef storage fill:#7AA116,stroke:#232F3E,stroke-width:2px,color:#fff
+    classDef database fill:#00897B,stroke:#232F3E,stroke-width:2px,color:#fff
+    classDef iam fill:#DD344C,stroke:#232F3E,stroke-width:2px,color:#fff
+    classDef network fill:#A66AD1,stroke:#232F3E,stroke-width:2px,color:#fff
+    classDef monitoring fill:#FF4F8B,stroke:#232F3E,stroke-width:2px,color:#fff
+    classDef external fill:#F1EFE8,stroke:#5F5E5A,stroke-width:2px,color:#2C2C2A
+
+    %% ===== LAYER 0: INTERNET ENTRY POINT =====
+    subgraph internet["🌐 External Traffic"]
+        direction LR
+        users["🌐 Internet Traffic<br/>External Requests"]
+    end
+
+    %% ===== LAYER 1: ENTRY / SECURITY =====
+    subgraph entry["📥 Entry & Edge Security"]
+        direction LR
+        cdn["🌐 CloudFront<br/>CDN / Edge"]
+        waf["🔐 WAF<br/>Web ACL"]
+    end
+
+    %% ===== LAYER 2: LOAD BALANCING =====
+    subgraph lb_layer["⚖️ Load Balancing"]
+        direction LR
+        alb["⚖️ ALB<br/>Traffic Distribution"]
+    end
+
+    %% ===== LAYER 3: COMPUTE =====
+    subgraph compute_layer["⚙️ Compute"]
+        direction LR
+        ecs["⚙️ ECS Service<br/>App Containers"]
+    end
+
+    %% ===== LAYER 4: STORAGE / PERSISTENCE =====
+    subgraph storage_layer["💾 Storage & Persistence"]
+        direction LR
+        rds["🗄️ RDS<br/>Database"]
+        s3["🪣 S3<br/>Static Assets"]
+    end
+
+    %% ===== LAYER 5: MONITORING =====
+    subgraph monitoring_layer["📝 Observability"]
+        direction LR
+        cw["📝 CloudWatch<br/>Logs & Metrics"]
+    end
+
+    %% ===== CONNECTIONS =====
+    users --> cdn
+    cdn --> waf
+    cdn --> s3
+    cdn --> alb
+    alb --> ecs
+    ecs --> rds
+    ecs --> cw
+
+    %% ===== CLASS ASSIGNMENTS =====
+    class users external
+    class cdn network
+    class waf iam
+    class alb network
+    class ecs compute
+    class rds database
+    class s3 storage
+    class cw monitoring
