@@ -1,5 +1,5 @@
 ---
-name: Commit Terramaid Results - V1
+name: Commit Terramaid Results
 
 "on":
   workflow_dispatch:
@@ -46,6 +46,7 @@ jobs:
           # interpolation when passed through ${{ }} context
           printf "" > /tmp/summary.md
 
+          FILES_LIST="${{ steps.find.outputs.files }}"
           MOVED=false
           while IFS= read -r FILE; do
             SEARCH=$(dirname "$FILE")
@@ -72,7 +73,7 @@ jobs:
             printf -- "- %s -> %s/\n" "$FNAME" "$DEST" >> /tmp/summary.md
             MOVED=true
 
-          done <<< "${{ steps.find.outputs.files }}"
+          done <<< "$FILES_LIST"
 
           echo "moved=${MOVED}" >> "$GITHUB_OUTPUT"
 
