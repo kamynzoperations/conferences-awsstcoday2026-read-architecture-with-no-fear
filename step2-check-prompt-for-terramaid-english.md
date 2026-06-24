@@ -314,7 +314,7 @@ Use consistent emoji icons across your diagrams:
 ### Testing the Output
 
 1. **Render the diagram**
-   - Use [Mermaid Live Editor](https://mermaid.live/) or Use the Mermaid Plugin in IDE such as Visual Studio Code.
+   - Use [Mermaid Live Editor](https://mermaid.live/) or Use the [Mermaid Plugin](https://marketplace.visualstudio.com/items?itemName=MermaidChart.vscode-mermaid-chart) in IDE such as Visual Studio Code.
    - Check for rendering errors or layout issues
    - Verify colors display correctly
    - Test dark mode (if supported)
