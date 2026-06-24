@@ -1,5 +1,5 @@
 ---
-name: Commit Terravision Results - V1
+name: Commit Terravision Results
 
 "on":
   workflow_dispatch:
@@ -42,10 +42,11 @@ jobs:
         if: steps.find.outputs.found == 'true'
         id: move
         run: |
-          # Write summary directly to a file — avoids backtick
-          # interpolation when passed through ${{ }} context
+          # Write summary to a file — avoids backtick interpolation
+          # when passed through GitHub Actions context variables
           printf "" > /tmp/summary.md
 
+          FILES_LIST="${{ steps.find.outputs.files }}"
           MOVED=false
           while IFS= read -r FILE; do
             SEARCH=$(dirname "$FILE")
@@ -72,7 +73,7 @@ jobs:
             printf -- "- %s -> %s/\n" "$FNAME" "$DEST" >> /tmp/summary.md
             MOVED=true
 
-          done <<< "${{ steps.find.outputs.files }}"
+          done <<< "$FILES_LIST"
 
           echo "moved=${MOVED}" >> "$GITHUB_OUTPUT"
 
