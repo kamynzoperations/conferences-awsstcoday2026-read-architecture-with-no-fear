@@ -1,4 +1,4 @@
-# Mermaid Diagram Styling Prompt – Updated
+# Mermaid Diagram Styling Prompt
 ## AI Fluency Framework-Based Approach (4Ds Framework)
 ### Version 2.0 — Generalized for Any Mermaid Diagram with Internet Entry Point
 
