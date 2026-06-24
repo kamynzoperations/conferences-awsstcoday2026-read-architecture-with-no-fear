@@ -105,7 +105,7 @@ LAYER 6: Supporting Infrastructure (Networking, Secrets, Config)
 
 **At the TOP of your diagram, add an external traffic node:**
 
-```mermaid
+```
 %% Internet users entry point (pick one symbol):
 
 %% Option A: People icon (for end-user focus)
@@ -121,7 +121,7 @@ users["🌐 Internet Traffic<br/>External Requests"]
 - Connect it to your first internal layer with a clear arrow
 - Example for AWS style:
 
-```mermaid
+```
 classDef external fill:#F1EFE8,stroke:#5F5E5A,stroke-width:2px,color:#2C2C2A
 class users external
 ```
@@ -134,7 +134,7 @@ class users external
 
 Create a subgraph for each layer:
 
-```mermaid
+```
 %% LAYER 0: External
 subgraph internet["🌐 External Traffic"]
     direction LR
@@ -172,7 +172,7 @@ compute --> storage
 
 **Paste at the TOP of your diagram:**
 
-```mermaid
+```
 %% Color class definitions (function-based, not provider-specific)
 classDef compute fill:#FF9900,stroke:#232F3E,stroke-width:2px,color:#232F3E
 classDef storage fill:#7AA116,stroke:#232F3E,stroke-width:2px,color:#fff
@@ -191,7 +191,7 @@ classDef external fill:#F1EFE8,stroke:#5F5E5A,stroke-width:2px,color:#2C2C2A
 
 At the end of your diagram:
 
-```mermaid
+```
 class users external
 class cdn,alb network
 class service compute
@@ -314,7 +314,7 @@ Use consistent emoji icons across your diagrams:
 ### Testing the Output
 
 1. **Render the diagram**
-   - Use [Mermaid Live Editor](https://mermaid.live/)
+   - Use [Mermaid Live Editor](https://mermaid.live/) or Use the Mermaid Plugin in IDE such as Visual Studio Code.
    - Check for rendering errors or layout issues
    - Verify colors display correctly
    - Test dark mode (if supported)
@@ -559,17 +559,6 @@ Git Commit → GitHub Webhook → CI Runner (build job)
 
 ---
 
-## 🔗 Useful Resources
-
-- **Mermaid Official Docs**: https://mermaid.js.org/
-- **Mermaid Live Editor**: https://mermaid.live/
-- **Contrast Checker**: https://webaim.org/resources/contrastchecker/
-- **Color Blindness Simulator**: https://www.color-blindness.com/coblis-color-blindness-simulator/
-- **Mermaid CLI**: https://mermaid.js.org/syntax/flowchart.html
-- **Version Control for Diagrams**: GitHub/GitLab (store `.mmd` alongside code)
-
----
-
 ## 📞 Implementation Checklist for Teams
 
 - [ ] **Decide on symbol**: 👥 (people-focused) or 🌐 (generic)? Or both?
@@ -583,7 +572,7 @@ Git Commit → GitHub Webhook → CI Runner (build job)
 
 ---
 
-**Framework Used**: AI Fluency Framework - 4Ds (Delegation, Description, Discernment, Diligence)  
+**Framework Used**: AI Fluency Framework - 4Ds (Delegation, Description, Discernment, Diligence). Link: https://anthropic.skilljar.com/ai-fluency-framework-foundations
 **Version**: 2.0 — Generalized for Any Mermaid Diagram with Internet Entry Point  
 **Last Updated**: June 23, 2026  
 **Compatibility**: Claude, ChatGPT, Gemini, Llama, and other LLMs  
