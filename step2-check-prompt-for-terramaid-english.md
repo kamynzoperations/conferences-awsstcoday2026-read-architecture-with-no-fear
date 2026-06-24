@@ -573,7 +573,11 @@ Git Commit → GitHub Webhook → CI Runner (build job)
 ---
 
 **Framework Used**: AI Fluency Framework - 4Ds (Delegation, Description, Discernment, Diligence). Link: https://anthropic.skilljar.com/ai-fluency-framework-foundations
+
 **Version**: 2.0 — Generalized for Any Mermaid Diagram with Internet Entry Point  
+
 **Last Updated**: June 23, 2026  
+
 **Compatibility**: Claude, ChatGPT, Gemini, Llama, and other LLMs  
+
 **Status**: Ready for Team Use
