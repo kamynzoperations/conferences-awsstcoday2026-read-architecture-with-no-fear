@@ -1,0 +1,110 @@
+name: Commit Terramaid Results
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['**.tf']
+
+jobs:
+  commit-terramaid-results:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # ── 1. Search recursively for styled Mermaid files ──────────────────────
+      - name: Find styled Mermaid files
+        id: find
+        run: |
+          FILES=$(find . -name "*_tm_style-*.mmd" -not -path "./.git/*")
+
+          if [ -z "$FILES" ]; then
+            echo "::warning::No files matching *_tm_style-*.mmd were found. Nothing to commit."
+            echo "found=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "found=true" >> "$GITHUB_OUTPUT"
+            {
+              echo "files<<EOF"
+              echo "$FILES"
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+          fi
+
+      # ── 2. Route each file to its nearest tf-*/results/ folder ──────────────
+      - name: Move files to results folders
+        if: steps.find.outputs.found == 'true'
+        id: move
+        run: |
+          MOVED=""
+
+          while IFS= read -r FILE; do
+            # Walk up the directory tree to find the nearest tf-*/ ancestor
+            SEARCH=$(dirname "$FILE")
+            TF_ROOT=""
+
+            while [ "$SEARCH" != "." ] && [ "$SEARCH" != "/" ]; do
+              if [[ "$(basename "$SEARCH")" == tf-* ]]; then
+                TF_ROOT="$SEARCH"
+                break
+              fi
+              SEARCH=$(dirname "$SEARCH")
+            done
+
+            # Skip files that are not inside any tf-*/ directory
+            if [ -z "$TF_ROOT" ]; then
+              echo "::warning::$(basename "$FILE") is not inside a tf-*/ directory — skipping."
+              continue
+            fi
+
+            DEST="$TF_ROOT/results"
+            mkdir -p "$DEST"
+            mv "$FILE" "$DEST/"
+            MOVED="${MOVED}\n- \`$(basename "$FILE")\` → \`$DEST/\`"
+
+          done <<< "${{ steps.find.outputs.files }}"
+
+          if [ -z "$MOVED" ]; then
+            echo "moved=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "moved=true" >> "$GITHUB_OUTPUT"
+            {
+              echo "summary<<EOF"
+              printf "%b" "$MOVED"
+              echo ""
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+          fi
+
+      # ── 3. Push branch and open PR ───────────────────────────────────────────
+      - name: Create branch and open Pull Request
+        if: steps.move.outputs.moved == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH="automation/diagram-updates-${{ github.run_id }}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add .
+          git diff --staged --quiet || git commit -m ":bricks: Add Terramaid styled diagram results [skip ci]"
+          git push origin "$BRANCH"
+
+          PR_BODY="## Terramaid Diagram Results
+          
+The following styled Mermaid files were detected and moved to their respective \`results/\` folders:
+
+${{ steps.move.outputs.summary }}
+
+---
+_Triggered by workflow run [#${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})_"
+
+          gh pr create \
+            --title ":bricks: Infrastructure related changes." \
+            --body "$PR_BODY" \
+            --base main \
+            --head "$BRANCH"
