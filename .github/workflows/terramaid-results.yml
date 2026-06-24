@@ -42,8 +42,11 @@ jobs:
         if: steps.find.outputs.found == 'true'
         id: move
         run: |
-          MOVED=""
+          # Write summary directly to a file — avoids backtick
+          # interpolation when passed through ${{ }} context
+          printf "" > /tmp/summary.md
 
+          MOVED=false
           while IFS= read -r FILE; do
             SEARCH=$(dirname "$FILE")
             TF_ROOT=""
@@ -66,21 +69,12 @@ jobs:
             mkdir -p "$DEST"
             mv "$FILE" "$DEST/"
             FNAME=$(basename "$FILE")
-            MOVED="${MOVED}\n- \`${FNAME}\` -> \`${DEST}/\`"
+            printf -- "- %s -> %s/\n" "$FNAME" "$DEST" >> /tmp/summary.md
+            MOVED=true
 
           done <<< "${{ steps.find.outputs.files }}"
 
-          if [ -z "$MOVED" ]; then
-            echo "moved=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "moved=true" >> "$GITHUB_OUTPUT"
-            {
-              echo "summary<<EOF"
-              printf "%b" "$MOVED"
-              echo ""
-              echo "EOF"
-            } >> "$GITHUB_OUTPUT"
-          fi
+          echo "moved=${MOVED}" >> "$GITHUB_OUTPUT"
 
       # ── 3. Push branch and open PR ───────────────────────────────────
       - name: Create branch and open Pull Request
@@ -101,11 +95,10 @@ jobs:
             ":bricks: Add Terramaid styled diagram results [skip ci]"
           git push origin "$BRANCH"
 
-          SUMMARY="${{ steps.move.outputs.summary }}"
           printf "## Terramaid Diagram Results\n\n" > /tmp/pr_body.md
           printf "Files moved to results/ folders:\n\n" >> /tmp/pr_body.md
-          printf "%s\n\n" "$SUMMARY" >> /tmp/pr_body.md
-          printf "_Workflow run: %s_\n" "$RUN_URL" >> /tmp/pr_body.md
+          cat /tmp/summary.md >> /tmp/pr_body.md
+          printf "\n_Workflow run: %s_\n" "$RUN_URL" >> /tmp/pr_body.md
 
           gh pr create \
             --title ":bricks: Infrastructure related changes." \
