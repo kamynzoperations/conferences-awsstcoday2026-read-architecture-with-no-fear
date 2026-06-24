@@ -359,7 +359,7 @@ Use consistent emoji icons across your diagrams:
 
 ### Function-Based Color Palette (Copy-Paste Ready)
 
-```mermaid
+```
 %% Use this at the start of ANY Mermaid diagram
 %% Adapt colors to your org/provider
 
@@ -376,7 +376,7 @@ classDef external fill:#F1EFE8,stroke:#5F5E5A,stroke-width:2px,color:#2C2C2A
 
 ### Generic Template (Works for Any Domain)
 
-```mermaid
+```
 flowchart TD
     %% ===== STYLE DEFINITIONS =====
     classDef compute fill:#FF9900,stroke:#232F3E,stroke-width:2px,color:#232F3E
@@ -438,7 +438,7 @@ flowchart TD
 ### Customization Examples
 
 **Change a single color:**
-```mermaid
+```
 %% Default (orange compute)
 classDef compute fill:#FF9900,stroke:#232F3E,stroke-width:2px,color:#232F3E
 
@@ -447,13 +447,13 @@ classDef compute fill:#0066CC,stroke:#232F3E,stroke-width:2px,color:#fff
 ```
 
 **Add emphasis to critical resources:**
-```mermaid
+```
 classDef critical fill:#FF9900,stroke:#DD344C,stroke-width:4px,color:#232F3E
 class critical_node1,critical_node2 critical
 ```
 
 **Deprecate or highlight experimental resources:**
-```mermaid
+```
 classDef deprecated fill:#CCCCCC,stroke:#666,stroke-width:2px,stroke-dasharray:5 5,color:#333
 classDef experimental fill:#FFE680,stroke:#FFB300,stroke-width:2px,color:#333
 ```
