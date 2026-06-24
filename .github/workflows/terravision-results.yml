@@ -21,7 +21,7 @@ jobs:
       - name: Find styled Terravision PNG files
         id: find
         run: |
-          FILES=$(find . -name "*_tv_style-*.png" \
+          FILES=$(find . -name "*_tv_*.png" \
             -not -path "./.git/*")
 
           if [ -z "$FILES" ]; then
