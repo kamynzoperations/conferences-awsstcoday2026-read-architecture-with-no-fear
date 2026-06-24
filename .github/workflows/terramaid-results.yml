@@ -1,5 +1,5 @@
 ---
-name: Commit Terramaid Results
+name: Commit Terramaid Results - V1
 
 "on":
   workflow_dispatch:
