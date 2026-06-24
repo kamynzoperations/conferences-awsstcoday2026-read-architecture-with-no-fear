@@ -42,8 +42,8 @@ jobs:
         if: steps.find.outputs.found == 'true'
         id: move
         run: |
-          # Write summary directly to a file — avoids backtick
-          # interpolation when passed through ${{ }} context
+          # Write summary to a file — avoids backtick interpolation
+          # when passed through GitHub Actions context variables
           printf "" > /tmp/summary.md
 
           FILES_LIST="${{ steps.find.outputs.files }}"
