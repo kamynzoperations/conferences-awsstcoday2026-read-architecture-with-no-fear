@@ -73,8 +73,16 @@ terramaid run \
 3. Ejecuta el siguiente prompt en Claude:
 
     ```
-    Use the prompt in ../MERMAID_STYLING_PROMPT_UPDATED.md on the file 00_tm_demo-repo.mmd
-    and generate the output as 01_tm_style-demo-repo.mmd with title "AWS Terraform Overview".
+    Usa el prompt en ../MERMAID_STYLING_PROMPT_UPDATED_spanish.md sobre el archivo 00_tm_demo-repo.mmd
+  y genera la salida como 01_tm_style-demo-repo.mmd.
+
+  Crea DOS versiones:
+    - Resumen (simplificada, 6-8 nodos, para presentación)
+    - Detallada (completa, todos los nodos, para documentación)
+
+  Genera las 2 versiones en archivos .mmd separados:
+    - 01_tm_style-demo-repo-resumen.mmd
+    - 01_tm_style-demo-repo-detallado.mmd
     ```
 
 **Resultado esperado:** `01_tm_style-demo-repo.mmd` — un diagrama Mermaid con estilo, listo para presentación.

@@ -102,7 +102,7 @@ jobs:
           printf "\n_Workflow run: %s_\n" "$RUN_URL" >> /tmp/pr_body.md
 
           gh pr create \
-            --title ":bricks: Infrastructure related changes." \
+            --title ":bricks: Infrastructure related changes for Terravision" \
             --body-file /tmp/pr_body.md \
             --base main \
             --head "$BRANCH"
