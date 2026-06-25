@@ -1,0 +1,57 @@
+flowchart TD
+    %% ===== DEFINICIONES DE ESTILO =====
+    classDef external fill:#F1EFE8,stroke:#5F5E5A,stroke-width:2px,color:#2C2C2A
+    classDef network fill:#A66AD1,stroke:#232F3E,stroke-width:2px,color:#fff
+    classDef compute fill:#FF9900,stroke:#232F3E,stroke-width:2px,color:#232F3E
+    classDef storage fill:#7AA116,stroke:#232F3E,stroke-width:2px,color:#fff
+    classDef database fill:#00897B,stroke:#232F3E,stroke-width:2px,color:#fff
+    classDef monitoring fill:#FF4F8B,stroke:#232F3E,stroke-width:2px,color:#fff
+
+    %% ===== CAPA 0: TRAFICO EXTERNO =====
+    subgraph internet["🌐 Tráfico Externo"]
+        direction LR
+        users["👥 Usuarios de Internet<br/>Tráfico Externo"]
+    end
+
+    %% ===== CAPA 1: ENTRADA =====
+    subgraph entry["📥 Punto de Entrada"]
+        direction LR
+        cdn["🌐 CloudFront + WAF<br/>CDN y Protección"]
+        alb["⚖️ Load Balancer<br/>Distribución de Tráfico"]
+    end
+
+    %% ===== CAPA 2: PROCESAMIENTO =====
+    subgraph compute_layer["λ Procesamiento"]
+        direction LR
+        ecs["⚙️ ECS Service<br/>Lógica de Aplicación"]
+    end
+
+    %% ===== CAPA 3: DATOS =====
+    subgraph data_layer["💾 Datos"]
+        direction LR
+        rds["🗄️ RDS Database<br/>Persistencia de Datos"]
+        s3["🪣 S3 Static Assets<br/>Contenido Estático"]
+    end
+
+    %% ===== CAPA 4: MONITOREO =====
+    subgraph monitoring_layer["📝 Observabilidad"]
+        direction LR
+        logs["📝 CloudWatch Logs<br/>Observabilidad"]
+    end
+
+    %% ===== CONEXIONES =====
+    internet --> entry
+    cdn --> alb
+    cdn --> s3
+    alb --> ecs
+    ecs --> rds
+    ecs --> logs
+
+    %% ===== ASIGNACIÓN DE CLASES =====
+    class users external
+    class cdn,alb network
+    class ecs compute
+    class rds database
+    class s3 storage
+    class logs monitoring
+
