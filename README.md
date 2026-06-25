@@ -24,10 +24,6 @@ Este repositorio tiene la información necesaria para seguir la demo de la charl
 - Generar un diagrama de flujo Mermaid (Terramaid) a partir de recursos de Terraform, con estilo aplicado vía IA
 - Generar un diagrama de arquitectura en PNG (Terravision) directamente desde el código fuente de Terraform
 
-## Escenario de Demo
-
-> TBD
-
 ## Resumen
 
 | **Metas**        | *Ver sección de Metas arriba*                                                  |
@@ -62,7 +58,7 @@ Dos workflows de GitHub Actions convierten los diagramas generados localmente en
 
 | Workflow | Archivo | Detecta |
 |---|---|---|
-| Commit Terramaid Results | `.github/workflows/terramaid-results.yml` | `*_tm_style-*.mmd` |
+| Commit Terramaid Results | `.github/workflows/terramaid-results.yml` | `*_tm_*.mmd` |
 | Commit Terravision Results | `.github/workflows/terravision-results.yml` | `*_tv_*.png` |
 
 **Disparo (trigger):**
@@ -85,10 +81,7 @@ Dos workflows de GitHub Actions convierten los diagramas generados localmente en
 
 > TBD
 
-## Aprendizajes y próximos pasos
-
-> TBD
-
 ## Agradecimientos
 
-TBD
+- [Santiago Hurtaod](https://co.linkedin.com/in/santiago-hurtado): Ofrecerme apoyo y su conocimiento en liderazgo para desafiarme cada vez mas. 
+- [Jhonny Pong](https://www.linkedin.com/in/JhonnyPong): Ofrecerme apoyo en los eventos y ser una constante persona en mi vidad laboral para seguir creciendo. 
