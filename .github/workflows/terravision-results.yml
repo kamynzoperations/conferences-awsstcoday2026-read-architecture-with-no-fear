@@ -22,10 +22,11 @@ jobs:
         id: find
         run: |
           FILES=$(find . -name "*_tv_*.png" \
-            -not -path "./.git/*")
+            -not -path "./.git/*" \
+            -not -path "*/results/*")
 
           if [ -z "$FILES" ]; then
-            MSG="No *_tv_style-*.png files found. Nothing to commit."
+            MSG="No *_tv_*.png files found outside results/. Nothing to commit."
             echo "::warning::${MSG}"
             echo "found=false" >> "$GITHUB_OUTPUT"
           else
