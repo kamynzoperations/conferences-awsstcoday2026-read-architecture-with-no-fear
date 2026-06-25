@@ -9,39 +9,39 @@ flowchart TD
     classDef external fill:#F1EFE8,stroke:#5F5E5A,stroke-width:2px,color:#2C2C2A
 
     %% ===== LAYER 0: INTERNET ENTRY POINT =====
-    subgraph internet["🌐 External Traffic"]
+    subgraph internet["🌐 Tráfico Externo"]
         direction LR
         users["🌐 Internet Traffic<br/>External Requests"]
     end
 
     %% ===== LAYER 1: ENTRY / SECURITY =====
-    subgraph entry["📥 Entry & Edge Security"]
+    subgraph entry["📥 Entrada y Seguridad de Borde"]
         direction LR
         cdn["🌐 CloudFront<br/>CDN / Edge"]
         waf["🔐 WAF<br/>Web ACL"]
     end
 
     %% ===== LAYER 2: LOAD BALANCING =====
-    subgraph lb_layer["⚖️ Load Balancing"]
+    subgraph lb_layer["⚖️ Balanceo de Carga"]
         direction LR
         alb["⚖️ ALB<br/>Traffic Distribution"]
     end
 
     %% ===== LAYER 3: COMPUTE =====
-    subgraph compute_layer["⚙️ Compute"]
+    subgraph compute_layer["⚙️ Cómputo"]
         direction LR
         ecs["⚙️ ECS Service<br/>App Containers"]
     end
 
     %% ===== LAYER 4: STORAGE / PERSISTENCE =====
-    subgraph storage_layer["💾 Storage & Persistence"]
+    subgraph storage_layer["💾 Almacenamiento y Persistencia"]
         direction LR
         rds["🗄️ RDS<br/>Database"]
         s3["🪣 S3<br/>Static Assets"]
     end
 
     %% ===== LAYER 5: MONITORING =====
-    subgraph monitoring_layer["📝 Observability"]
+    subgraph monitoring_layer["📝 Observabilidad"]
         direction LR
         cw["📝 CloudWatch<br/>Logs & Metrics"]
     end
@@ -64,3 +64,5 @@ flowchart TD
     class rds database
     class s3 storage
     class cw monitoring
+
+
