@@ -270,3 +270,5 @@ conferences-awsstcoday2026-read-architecture-with-no-fear/terraform-with-modules
 #From subfolders
 before/*
 notes.txt
+
+specs/*
