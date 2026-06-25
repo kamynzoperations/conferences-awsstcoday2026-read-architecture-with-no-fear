@@ -1,7 +1,3 @@
-Aquí está la traducción al español del documento:
-
----
-
 # Prompt de Estilización para Diagramas Mermaid
 ## Enfoque Basado en el Marco de Fluencia en IA (Marco 4Ds)
 ### Versión 2.0 — Generalizado para Cualquier Diagrama Mermaid con Punto de Entrada a Internet
@@ -109,7 +105,7 @@ CAPA 6: Infraestructura de Soporte (Redes, Secretos, Config)
 
 **En la PARTE SUPERIOR de tu diagrama, añade un nodo de tráfico externo:**
 
-```mermaid
+```
 %% Punto de entrada de usuarios de internet (elige un símbolo):
 
 %% Opción A: Ícono de personas (para enfoque en usuario final)
@@ -125,7 +121,7 @@ users["🌐 Tráfico de Internet<br/>Solicitudes Externas"]
 - Conéctalo a tu primera capa interna con una flecha clara
 - Ejemplo al estilo AWS:
 
-```mermaid
+```
 classDef external fill:#F1EFE8,stroke:#5F5E5A,stroke-width:2px,color:#2C2C2A
 class users external
 ```
@@ -138,7 +134,7 @@ class users external
 
 Crea un subgrafo para cada capa:
 
-```mermaid
+```
 %% CAPA 0: Externa
 subgraph internet["🌐 Tráfico Externo"]
     direction LR
@@ -176,7 +172,7 @@ compute --> storage
 
 **Pega esto en la PARTE SUPERIOR de tu diagrama:**
 
-```mermaid
+```
 %% Definiciones de clases de color (basadas en función, no específicas del proveedor)
 classDef compute fill:#FF9900,stroke:#232F3E,stroke-width:2px,color:#232F3E
 classDef storage fill:#7AA116,stroke:#232F3E,stroke-width:2px,color:#fff
@@ -195,7 +191,7 @@ classDef external fill:#F1EFE8,stroke:#5F5E5A,stroke-width:2px,color:#2C2C2A
 
 Al final de tu diagrama:
 
-```mermaid
+```
 class users external
 class cdn,alb network
 class service compute
@@ -363,7 +359,7 @@ Usa íconos emoji consistentes en todos tus diagramas:
 
 ### Paleta de Colores Basada en Función (Lista para Copiar y Pegar)
 
-```mermaid
+```
 %% Usar esto al inicio de CUALQUIER diagrama Mermaid
 %% Adaptar colores a tu organización/proveedor
 
@@ -380,7 +376,7 @@ classDef external fill:#F1EFE8,stroke:#5F5E5A,stroke-width:2px,color:#2C2C2A
 
 ### Plantilla Genérica (Funciona para Cualquier Dominio)
 
-```mermaid
+```
 flowchart TD
     %% ===== DEFINICIONES DE ESTILO =====
     classDef compute fill:#FF9900,stroke:#232F3E,stroke-width:2px,color:#232F3E
@@ -442,7 +438,7 @@ flowchart TD
 ### Ejemplos de Personalización
 
 **Cambiar un solo color:**
-```mermaid
+```
 %% Por defecto (cómputo naranja)
 classDef compute fill:#FF9900,stroke:#232F3E,stroke-width:2px,color:#232F3E
 
@@ -451,13 +447,13 @@ classDef compute fill:#0066CC,stroke:#232F3E,stroke-width:2px,color:#fff
 ```
 
 **Añadir énfasis a recursos críticos:**
-```mermaid
+```
 classDef critical fill:#FF9900,stroke:#DD344C,stroke-width:4px,color:#232F3E
 class nodo_critico1,nodo_critico2 critical
 ```
 
 **Marcar como obsoleto o resaltar recursos experimentales:**
-```mermaid
+```
 classDef deprecated fill:#CCCCCC,stroke:#666,stroke-width:2px,stroke-dasharray:5 5,color:#333
 classDef experimental fill:#FFE680,stroke:#FFB300,stroke-width:2px,color:#333
 ```
