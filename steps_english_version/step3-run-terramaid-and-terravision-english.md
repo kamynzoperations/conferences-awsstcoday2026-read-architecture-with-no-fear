@@ -72,10 +72,19 @@ terramaid run \
 
 3. Run the following prompt in Claude:
 
-    ```
-    Use the prompt in ../MERMAID_STYLING_PROMPT_UPDATED.md on the file 00_tm_demo-repo.mmd
-    and generate the output as 01_tm_style-demo-repo.mmd with title "AWS Terraform Overview".
-    ```
+```
+Use the prompt in ../MERMAID_STYLING_PROMPT_UPDATED.md on the file 00_tm_demo-repo.mmd
+and generate the following output
+
+Create 2 versions:
+-A high level overview with a simplified node 6-8
+-Detailed version with all of the nodes
+
+Generate these version in 2 separate files:
+
+01_tm_style-demo-repo-overview.mmd
+01_tm_style-demo-repo-detailed.mmd
+```
 
 **Expected output:** `01_tm_style-demo-repo.mmd` — a styled, presentation-ready Mermaid diagram.
 
