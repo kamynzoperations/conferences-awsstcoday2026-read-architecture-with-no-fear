@@ -64,30 +64,32 @@ terramaid run \
     claude
     ```
 
-2. Confirma tu directorio de trabajo dentro de Claude:
+2. Asegurate de usar Haiku 4.5:
+    
+3. Confirma tu directorio de trabajo dentro de Claude:
 
     ```
     pwd
     ```
 
-3. Ejecuta el siguiente prompt en Claude:
+3. Ejecuta el siguiente prompt en Claude. Nota: Es mejor pedir el resultado en Ingles dado a la estructura que se toma de Terramaid:
 
 ```
-Utiliza el prompt en ../MERMAID_STYLING_PROMPT_UPDATED_spanish.md en el archivo 00_tm_demo-repo.mmd
-  y genera el siguiente resultado
+Use the prompt in ../MERMAID_STYLING_PROMPT_UPDATED.md on the file 00_tm_demo-repo.mmd
+and generate the following output
 
-  Crea 2 versiones:
-  - Una descripción general de alto nivel con nodos simplificados (6-8)
-  - Versión detallada con todos los nodos
+Create 2 versions:
+-A high level overview with a simplified node 6-8
+-Detailed version with all of the nodes
 
-  Genera estas versiones en 2 archivos separados:
+Generate these version in 2 separate files:
 
-  01_tm_style-demo-repo-overview.mmd
-  01_tm_style-demo-repo-detailed.mmd
+01_tm_style-demo-repo-overview.mmd
+01_tm_style-demo-repo-detailed.mmd
 ```
     
 
-**Resultado esperado:** `01_tm_style-demo-repo.mmd` — un diagrama Mermaid con estilo, listo para presentación.
+**Resultado esperado:** `01_tm_style-demo-repo-overview.mmd` y `01_tm_style-demo-repo-detailed.mmd` — 2 diagramas Mermaid con estilo, listo para discutir segun el contexto tuyo.
 
 ---
 
