@@ -75,7 +75,7 @@ Dos workflows de GitHub Actions convierten los diagramas generados localmente en
 
 ## Video
 
-> TBD
+> Link del demo: https://youtu.be/_mBFRftzf34
 
 ## Pre-Learning
 
