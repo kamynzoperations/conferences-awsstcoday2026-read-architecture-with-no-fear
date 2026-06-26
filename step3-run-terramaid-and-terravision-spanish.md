@@ -9,13 +9,33 @@ Este paso visualiza la infraestructura de Terraform del repositorio de demostrac
 
 ---
 
-## 1. Clonar el repositorio
+## 0. Clonar el repositorio
 
 **Por qué:** Necesitas los archivos fuente de Terraform y el prompt de estilo Mermaid para ejecutar ambas herramientas.
 
 ```bash
 git clone https://github.com/kamynzoperations/conferences-awsstcoday2026-read-architecture-with-no-fear.git
 ```
+
+## 1. Crear tu rama de trabajo personal
+
+**Por qué:** Nunca trabajas directamente sobre `main`. Cada participante crea
+su propia rama para que los cambios estén aislados y no interfieran con los
+de otras personas.
+
+**Convención de nombre:** usa tus 2 iniciales seguidas de `-tf-demo-repo`.
+Por ejemplo, si te llamas Carlos Martínez → `cm-tf-demo-repo`.
+
+```bash
+# Asegúrate de estar en main y tenerlo actualizado
+git checkout main
+git pull origin main
+
+# Crea tu rama personal y cambia a ella
+git checkout -b cm-tf-demo-repo main
+```
+
+**Resultado esperado:** estarás en tu nueva rama y listo para trabajar:
 
 ---
 
