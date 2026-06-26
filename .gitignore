@@ -272,3 +272,11 @@ before/*
 notes.txt
 
 specs/*
+tf-aws-account-storage/00_tm_aws-account-storage.mmd
+.gitignore
+.gitignore
+tf-aws-account-storage/01_tm_style-repo-detailed.mmd
+.gitignore
+tf-aws-account-storage/00_tv_account-storage-aws_architecture-aws.dot.png
+.gitignore
+tf-aws-account-storage/01_tm_style-repo-overview.mmd
