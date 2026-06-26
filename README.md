@@ -84,4 +84,4 @@ Dos workflows de GitHub Actions convierten los diagramas generados localmente en
 ## Agradecimientos
 
 - [Santiago Hurtado](https://co.linkedin.com/in/santiago-hurtado): Ofrecerme apoyo y su conocimiento en liderazgo para desafiarme cada vez mas. 
-- [Jhonny Pong](https://www.linkedin.com/in/JhonnyPong): Ofrecerme apoyo en los eventos y ser una constante persona en mi vidad laboral para seguir creciendo. 
+- [Jhonny Pong](https://www.linkedin.com/in/JhonnyPong): Ofrecerme apoyo en los eventos y ser una constante persona en mi vida laboral para seguir creciendo. 
