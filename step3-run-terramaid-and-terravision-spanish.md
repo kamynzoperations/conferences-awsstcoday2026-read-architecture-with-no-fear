@@ -73,15 +73,17 @@ terramaid run \
 3. Ejecuta el siguiente prompt en Claude:
 
 ```
-Usa el prompt en ../MERMAID_STYLING_PROMPT_UPDATED_spanish.md sobre el archivo 00_tm_demo-repo.mmd y genera la salida como 01_tm_style-demo-repo.mmd.
+Utiliza el prompt en ../MERMAID_STYLING_PROMPT_UPDATED_spanish.md en el archivo 00_tm_demo-repo.mmd
+  y genera el siguiente resultado
 
-  Crea DOS versiones:
-    - Resumen (simplificada, 6-8 nodos, para presentación)
-    - Detallada (completa, todos los nodos, para documentación)
+  Crea 2 versiones:
+  - Una descripción general de alto nivel con nodos simplificados (6-8)
+  - Versión detallada con todos los nodos
 
-  Genera las 2 versiones en archivos .mmd separados:
-    - 01_tm_style-demo-repo-resumen.mmd
-    - 01_tm_style-demo-repo-detallado.mmd
+  Genera estas versiones en 2 archivos separados:
+
+  01_tm_style-demo-repo-overview.mmd
+  01_tm_style-demo-repo-detailed.mmd
 ```
     
 
